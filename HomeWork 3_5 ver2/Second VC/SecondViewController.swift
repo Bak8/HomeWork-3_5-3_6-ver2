@@ -12,12 +12,11 @@ class SecondViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupSubviews()
         filteredCars = data.cars
     }
     func setupSubviews () {
-//        carsSearchBar.delegate = self
+        carsSearchBar.delegate = self
         carsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "film_cell")
         addButton.setTitleColor(.white, for: .normal)
         addButton.setTitle("+", for: .normal)
@@ -60,7 +59,6 @@ class SecondViewController: UIViewController {
 
 extension SecondViewController:UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let data = ViewController()
         
 //        return data.totalArray.count
         
@@ -102,14 +100,14 @@ extension SecondViewController: UITableViewDelegate{
 extension SecondViewController:UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        filteredCars = []
+        filteredCars = [CarModel]()
         
         if searchText == "" {
             filteredCars = data.cars
         }else{
             for car in data.cars {
-                if car.uppercased().contains(searchText.uppercased()) {
-                    
+                if car.carName.uppercased().contains(searchText.uppercased()) {
+    
                     filteredCars.append(car)
                 }
             }

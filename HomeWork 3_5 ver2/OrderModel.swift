@@ -7,3 +7,5 @@ struct CarModel {
     var carName : String
     var carPrice : Int
 }
+
+var totalArray = [CarModel]()

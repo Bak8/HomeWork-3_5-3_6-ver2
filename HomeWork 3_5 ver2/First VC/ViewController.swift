@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     var totalSum = 0
     var textField = UITextField()
     
-    var totalArray = [CarModel]()
+   
     
    
     
@@ -32,7 +32,6 @@ class ViewController: UIViewController {
     
     
     var cars : [CarModel] = [CarModel(carImage: "MCLAREN", carName: "Mclaren 720", carPrice: 700),CarModel(carImage: "Camry", carName: "Toyota Camry", carPrice: 100),CarModel(carImage: "BMW7", carName: "BMW 7", carPrice: 300),CarModel(carImage: "BMWX6", carName: "BMW X6", carPrice: 350),CarModel(carImage: "BMWM3", carName: "BMW M3", carPrice: 280),CarModel(carImage: "AMGGT", carName: "MBZ GT", carPrice: 500), CarModel (carImage: "MCLAREN", carName: "Mclaren 720", carPrice: 700),CarModel(carImage: "Camry", carName: "Toyota Camry", carPrice: 100),CarModel(carImage: "BMW7", carName: "BMW 7", carPrice: 300),CarModel(carImage: "BMWX6", carName: "BMW X6", carPrice: 350),CarModel(carImage: "BMWM3", carName: "BMW M3", carPrice: 280),CarModel(carImage: "AMGGT", carName: "MBZ GT", carPrice: 500)]
-    
     
     
     
@@ -67,7 +66,8 @@ class ViewController: UIViewController {
     }
     @objc   func openSecondView () {
         let secondVC = SecondViewController()
-        show(secondVC, sender: self)
+        navigationController?.pushViewController(secondVC, animated: true)
+//        show(secondVC, sender: self)
         
     }
 
@@ -85,7 +85,7 @@ extension ViewController:UICollectionViewDataSource {
         cell.carNameCell.text = cars[indexPath.row].carName
         cell.carPriceCell.text = "Цена: \(cars[indexPath.row].carPrice) $"
         
-        floatingButton.setTitle("Количество Машин: \(count)", for: .normal)
+//        floatingButton.setTitle("Количество Машин: \(count)", for: .normal)
      return cell
     }
     
@@ -102,7 +102,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         count += 1
         floatingButton.setTitle("Количество Машин: \(count)", for: .normal)
-        self.totalArray.append(cars[indexPath.row])
+        totalArray.append(cars[indexPath.row])
         print(totalArray)
 //                imageCollectionView.reloadData()
         
